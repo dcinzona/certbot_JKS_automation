@@ -3,3 +3,4 @@ config
 logs
 tmp
 *.jks
+*.jks.log

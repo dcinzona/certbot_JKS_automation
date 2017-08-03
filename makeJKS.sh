@@ -2,15 +2,15 @@
 
 sleep 5
 echo "CERTBOT_DOMAIN = $CERTBOT_DOMAIN"
-echo "RENEWED_LINEAGE = $RENEWED_LINEAGE"
+# echo "RENEWED_LINEAGE = $RENEWED_LINEAGE"
 CERTPATH="$RENEWED_LINEAGE"
 if [ -z $CERTPATH ]; then
 echo "CERTPATH was blank"
 exit 1
 fi
 if [ -d $CERTPATH ]; then
-    echo "Creating JKS file..."
-    echo "CERTPATH=$CERTPATH"
+    # echo "Creating JKS file..."
+    echo "CERTPATH = $CERTPATH"
 
     FULLCHAIN=$CERTPATH"/fullchain.pem"
     KEY=$CERTPATH"/privKey.pem"
@@ -18,7 +18,7 @@ if [ -d $CERTPATH ]; then
         CERTBOT_TOKEN=$(openssl rand -base64 32)
     fi
 
-    echo "Creating pkcs12 store..."
+    # echo "Creating pkcs12 store..."
 
     openssl pkcs12 -export \
         -in $FULLCHAIN \
@@ -31,7 +31,7 @@ if [ -d $CERTPATH ]; then
         rm -f $CERTBOT_DOMAIN.jks
     fi
 
-    echo "Creating JKS store..."
+    # echo "Creating JKS store..."
     keytool -noprompt \
         -importkeystore \
         -deststorepass $CERTBOT_TOKEN \
