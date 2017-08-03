@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Get your API key from https://www.cloudflare.com/a/account/my-account
-API_KEY="your-cloudflare-api-key"
-EMAIL="your-cloudflare-email"
+source cf_config.sh
+API_KEY=$CF_API_KEY
+EMAIL=$CF_EMAIL
+
 CFAPI="https://api.cloudflare.com/client/v4/zones"
 
 if [ -f tmp/CERTBOT_$CERTBOT_DOMAIN/ZONE_ID ]; then

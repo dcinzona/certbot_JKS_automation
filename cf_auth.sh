@@ -2,10 +2,9 @@
 # requires (python or jq) and curl
 # brew install jq
 #https://certbot.eff.org/docs/using.html#pre-and-post-validation-hooks
-
-# Get your API key from https://www.cloudflare.com/a/profile
-API_KEY="your-cloudflare-api-key"
-EMAIL="your-cloudflare-email"
+source cf_config.sh
+API_KEY=$CF_API_KEY
+EMAIL=$CF_EMAIL
 CFAPI="https://api.cloudflare.com/client/v4/zones"
 
 # Strip only the top domain to get the zone id
